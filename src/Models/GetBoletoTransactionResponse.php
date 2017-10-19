@@ -71,6 +71,38 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements Jso
     public $billingAddress;
 
     /**
+     * @todo Write general description for this property
+     * @required
+     * @maps line
+     * @var string $line public property
+     */
+    public $line;
+
+    /**
+     * @todo Write general description for this property
+     * @required
+     * @maps pdf
+     * @var string $pdf public property
+     */
+    public $pdf;
+
+    /**
+     * @todo Write general description for this property
+     * @required
+     * @maps due_at
+     * @var string $due_at public property
+     */
+    public $due_at;
+
+    /**
+     * @todo Write general description for this property
+     * @required
+     * @maps success
+     * @var string $success public property
+     */
+    public $success;
+
+    /**
      * Constructor to set initial or default values of member properties
      * @param string                    $url            Initialization value for $this->url
      * @param string                    $barCode        Initialization value for $this->barCode
@@ -79,10 +111,14 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements Jso
      * @param string                    $documentNumber Initialization value for $this->documentNumber
      * @param string                    $instructions   Initialization value for $this->instructions
      * @param GetBillingAddressResponse $billingAddress Initialization value for $this->billingAddress
+     * @param string                    $line           Initialization value for $this->line
+     * @param string                    $due_at         Initialization value for $this->due_at
+     * @param string                    $pdf            Initialization value for $this->pdf
+     * @param bool                      $success        Initialization value for $this->success
      */
     public function __construct()
     {
-        if (7 == func_num_args()) {
+        if (11 == func_num_args()) {
             $this->url            = func_get_arg(0);
             $this->barCode        = func_get_arg(1);
             $this->nossoNumero    = func_get_arg(2);
@@ -90,6 +126,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements Jso
             $this->documentNumber = func_get_arg(4);
             $this->instructions   = func_get_arg(5);
             $this->billingAddress = func_get_arg(6);
+            $this->line           = func_get_arg(7);
+            $this->due_at         = func_get_arg(8);
+            $this->pdf            = func_get_arg(9);
+            $this->success        = func_get_arg(10);
         }
     }
 
@@ -107,6 +147,10 @@ class GetBoletoTransactionResponse extends GetTransactionResponse implements Jso
         $json['document_number'] = $this->documentNumber;
         $json['instructions']    = $this->instructions;
         $json['billing_address'] = $this->billingAddress;
+        $json['line']            = $this->line;
+        $json['due_at']          = $this->due_at;
+        $json['pdf']             = $this->pdf;
+        $json['success']         = $this->success;
         $json = array_merge($json, parent::jsonSerialize());
 
         return $json;
