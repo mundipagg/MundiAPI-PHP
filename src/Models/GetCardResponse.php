@@ -23,6 +23,13 @@ class GetCardResponse implements JsonSerializable
 
     /**
      * @todo Write general description for this property
+     * @maps first_six_digits
+     * @var string $firstSixDigits public property
+     */
+    public $firstSixDigits;
+
+    /**
+     * @todo Write general description for this property
      * @required
      * @maps last_four_digits
      * @var string $lastFourDigits public property
@@ -130,6 +137,7 @@ class GetCardResponse implements JsonSerializable
     /**
      * Constructor to set initial or default values of member properties
      * @param string                    $id             Initialization value for $this->id
+     * @param string                    $firstSixDigits Initialization value for $this->firstSixDigits
      * @param string                    $lastFourDigits Initialization value for $this->lastFourDigits
      * @param string                    $brand          Initialization value for $this->brand
      * @param string                    $holderName     Initialization value for $this->holderName
@@ -147,22 +155,23 @@ class GetCardResponse implements JsonSerializable
      */
     public function __construct()
     {
-        if (15 == func_num_args()) {
+        if (16 == func_num_args()) {
             $this->id             = func_get_arg(0);
-            $this->lastFourDigits = func_get_arg(1);
-            $this->brand          = func_get_arg(2);
-            $this->holderName     = func_get_arg(3);
-            $this->expMonth       = func_get_arg(4);
-            $this->expYear        = func_get_arg(5);
-            $this->status         = func_get_arg(6);
-            $this->createdAt      = func_get_arg(7);
-            $this->updatedAt      = func_get_arg(8);
-            $this->billingAddress = func_get_arg(9);
-            $this->customer       = func_get_arg(10);
-            $this->metadata       = func_get_arg(11);
-            $this->type           = func_get_arg(12);
-            $this->holderDocument = func_get_arg(13);
-            $this->deletedAt      = func_get_arg(14);
+            $this->firstSixDigits = func_get_arg(1);
+            $this->lastFourDigits = func_get_arg(2);
+            $this->brand          = func_get_arg(3);
+            $this->holderName     = func_get_arg(4);
+            $this->expMonth       = func_get_arg(5);
+            $this->expYear        = func_get_arg(6);
+            $this->status         = func_get_arg(7);
+            $this->createdAt      = func_get_arg(8);
+            $this->updatedAt      = func_get_arg(9);
+            $this->billingAddress = func_get_arg(10);
+            $this->customer       = func_get_arg(11);
+            $this->metadata       = func_get_arg(12);
+            $this->type           = func_get_arg(13);
+            $this->holderDocument = func_get_arg(14);
+            $this->deletedAt      = func_get_arg(15);
         }
     }
 
@@ -174,6 +183,7 @@ class GetCardResponse implements JsonSerializable
     {
         $json = array();
         $json['id']               = $this->id;
+        $json['first_six_digits'] = $this->firstSixDigits;
         $json['last_four_digits'] = $this->lastFourDigits;
         $json['brand']            = $this->brand;
         $json['holder_name']      = $this->holderName;
