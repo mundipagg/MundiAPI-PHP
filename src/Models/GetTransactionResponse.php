@@ -18,6 +18,14 @@ use JsonSerializable;
 class GetTransactionResponse implements JsonSerializable
 {
     /**
+     * Transaction Reference
+     * @required
+     * @maps id
+     * @var string $id public property
+     */
+    public $id;
+
+    /**
      * Gateway transaction id
      * @required
      * @maps gateway_id
@@ -101,6 +109,7 @@ class GetTransactionResponse implements JsonSerializable
 
     /**
      * Constructor to set initial or default values of member properties
+     * @param string  $id              Initialization value for $this->id
      * @param string  $gatewayId       Initialization value for $this->gatewayId
      * @param integer $amount          Initialization value for $this->amount
      * @param string  $status          Initialization value for $this->status
@@ -115,18 +124,19 @@ class GetTransactionResponse implements JsonSerializable
      */
     public function __construct()
     {
-        if (11 == func_num_args()) {
-            $this->gatewayId       = func_get_arg(0);
-            $this->amount          = func_get_arg(1);
-            $this->status          = func_get_arg(2);
-            $this->success         = func_get_arg(3);
-            $this->createdAt       = func_get_arg(4);
-            $this->updatedAt       = func_get_arg(5);
-            $this->attemptCount    = func_get_arg(6);
-            $this->maxAttempts     = func_get_arg(7);
-            $this->splits          = func_get_arg(8);
-            $this->nextAttempt     = func_get_arg(9);
-            $this->transactionType = func_get_arg(10);
+        if (12 == func_num_args()) {
+            $this->id              = func_get_arg(0);
+            $this->gatewayId       = func_get_arg(1);
+            $this->amount          = func_get_arg(2);
+            $this->status          = func_get_arg(3);
+            $this->success         = func_get_arg(4);
+            $this->createdAt       = func_get_arg(5);
+            $this->updatedAt       = func_get_arg(6);
+            $this->attemptCount    = func_get_arg(7);
+            $this->maxAttempts     = func_get_arg(8);
+            $this->splits          = func_get_arg(9);
+            $this->nextAttempt     = func_get_arg(10);
+            $this->transactionType = func_get_arg(11);
         }
     }
 
@@ -137,6 +147,7 @@ class GetTransactionResponse implements JsonSerializable
     public function jsonSerialize()
     {
         $json = array();
+        $json['id']               = $this->id;
         $json['gateway_id']       = $this->gatewayId;
         $json['amount']           = $this->amount;
         $json['status']           = $this->status;
