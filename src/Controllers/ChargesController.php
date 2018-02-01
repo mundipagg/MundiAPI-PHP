@@ -567,8 +567,8 @@ class ChargesController extends BaseController
             'payment_method' => $paymentMethod,
             'customer_id'    => $customerId,
             'order_id'       => $orderId,
-            'created_since'  => DateTimeHelper::toRfc3339DateTime($created_since),
-            'created_until'  => DateTimeHelper::toRfc3339DateTime($created_until),
+            'created_since'  => DateTimeHelper::toRfc3339DateTime($createdSince),
+            'created_until'  => DateTimeHelper::toRfc3339DateTime($createdUntil),
         ));
 
         //validate and preprocess url
