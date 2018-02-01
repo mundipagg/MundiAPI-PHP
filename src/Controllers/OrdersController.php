@@ -253,8 +253,8 @@ class OrdersController extends BaseController
             'size'          => $size,
             'code'          => $code,
             'status'        => $status,
-            'created_since' => DateTimeHelper::toRfc3339DateTime($created_since),
-            'created_until' => DateTimeHelper::toRfc3339DateTime($created_until),
+            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
+            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
             'customer_id'   => $customerId,
         ));
 
