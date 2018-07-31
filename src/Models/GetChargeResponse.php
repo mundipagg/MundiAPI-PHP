@@ -146,6 +146,13 @@ class GetChargeResponse implements JsonSerializable
     public $canceledAt;
 
     /**
+     * @todo Write general description for this property
+     * @maps canceled_amount
+     * @var integer $canceledAmount public property
+     */
+    public $canceledAmount;
+
+    /**
      * Constructor to set initial or default values of member properties
      * @param string                  $id              Initialization value for $this->id
      * @param string                  $code            Initialization value for $this->code
@@ -164,6 +171,7 @@ class GetChargeResponse implements JsonSerializable
      * @param array                   $metadata        Initialization value for $this->metadata
      * @param \DateTime               $paidAt          Initialization value for $this->paidAt
      * @param \DateTime               $canceledAt      Initialization value for $this->canceledAt
+     * @param integer                 $canceledAmount  Initialization value for $this->canceledAmount
      */
     public function __construct()
     {
@@ -185,6 +193,7 @@ class GetChargeResponse implements JsonSerializable
             $this->metadata        = func_get_arg(14);
             $this->paidAt          = func_get_arg(15);
             $this->canceledAt      = func_get_arg(16);
+            $this->canceledAmount  = func_get_arg(17);
         }
     }
 
@@ -214,6 +223,7 @@ class GetChargeResponse implements JsonSerializable
             DateTimeHelper::toRfc3339DateTime($this->paidAt) : null;
         $json['canceled_at']      = isset($this->canceledAt) ?
             DateTimeHelper::toRfc3339DateTime($this->canceledAt) : null;
+        $json['amount']           = $this->amount;
 
         return $json;
     }
