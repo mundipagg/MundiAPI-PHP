@@ -30,6 +30,22 @@ class GetBalanceResponse implements JsonSerializable
     public $availableAmount;
 
     /**
+     * Indicates the balance receivable
+     * @required
+     * @maps waiting_funds_amount
+     * @var integer $waitingFundsAmount public property
+     */
+    public $waitingFundsAmount;
+
+    /**
+     * Indicates the balance transferred to the bank account
+     * @required
+     * @maps available_amount
+     * @var integer $transferredAmount public property
+     */
+    public $transferredAmount;
+
+    /**
      * Recipient
      * @var \MundiAPILib\Models\GetRecipientResponse|null $recipient public property
      */
@@ -59,6 +75,8 @@ class GetBalanceResponse implements JsonSerializable
         $json = array();
         $json['currency']         = $this->currency;
         $json['available_amount'] = $this->availableAmount;
+        $json['waiting_funds_amount'] = $this->waitingFundsAmount;
+        $json['transferred_amount'] = $this->transferredAmount;
         $json['recipient']        = $this->recipient;
 
         return $json;
